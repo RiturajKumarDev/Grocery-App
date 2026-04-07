@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Gradient Background -->
+    <gradient
+        android:angle="0"
+        android:startColor="#FFF9E6"
+        android:centerColor="#FFF3E0"
+        android:endColor="#FFF9E6"
+        android:type="linear" />
+
+    <!-- Rounded Corners -->
+    <corners android:radius="50dp" />
+
+    <!-- Gold Border with Dash Pattern -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/logo_gold"
+        android:dashWidth="8dp"
+        android:dashGap="4dp" />
+
+    <!-- Padding -->
+    <padding
+        android:left="4dp"
+        android:top="4dp"
+        android:right="4dp"
+        android:bottom="4dp" />
+</shape>

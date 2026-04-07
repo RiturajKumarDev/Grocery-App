@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+
+    <!-- Dashed Stroke -->
+    <stroke
+        android:width="1dp"
+        android:color="@color/logo_gold"
+        android:dashWidth="8dp"
+        android:dashGap="4dp" />
+
+    <!-- Height of the divider -->
+    <size android:height="1dp" />
+
+</shape>

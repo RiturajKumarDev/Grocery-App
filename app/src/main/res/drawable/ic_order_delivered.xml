@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Truck Body -->
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M20,8h-3V4H3C1.9,4 1,4.9 1,6v9h2c0,1.66 1.34,3 3,3s3-1.34 3-3h6c0,1.66 1.34,3 3,3s3-1.34 3-3h2v-5L20,8z" />
+
+    <!-- Left Wheel - Using path for circle -->
+    <path
+        android:fillColor="#8A4B2A"
+        android:pathData="M6,17 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
+
+    <!-- Right Wheel - Using path for circle -->
+    <path
+        android:fillColor="#8A4B2A"
+        android:pathData="M18,17 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
+
+    <!-- Check Mark -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M6,14 L9,17 L15,11"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+</vector>

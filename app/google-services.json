@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "297809522285",
+    "firebase_url": "https://shivam-kirana-store-default-rtdb.firebaseio.com",
+    "project_id": "shivam-kirana-store",
+    "storage_bucket": "shivam-kirana-store.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297809522285:android:3b047f36a24663d386d964",
+        "android_client_info": {
+          "package_name": "com.rituraj.shivamkiranastore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297809522285-0kgid62ej7q60tf7keso3jj8khukcqnr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rituraj.shivamkiranastore",
+            "certificate_hash": "6e32a4bc5b89d39bd83b0033d2c84eec2ae0470a"
+          }
+        },
+        {
+          "client_id": "297809522285-7l1vv2c263ar17c0u3m4cp3d32rqiheb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrZKdWVwwc3iP46TxzyEu7nLIxUdX4MeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297809522285-7l1vv2c263ar17c0u3m4cp3d32rqiheb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

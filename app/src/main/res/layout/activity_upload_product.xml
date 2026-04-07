@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/logo_white"
+    android:orientation="vertical"
+    tools:context=".ui.admin.ui.UploadProductActivity">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/logo_dark_blue"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Upload Product"
+        app:titleCentered="true"
+        app:titleTextColor="@color/white" />
+
+    <!-- Progress Bar (Hidden by default) -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:visibility="gone"
+        app:indicatorColor="@color/logo_orange"
+        app:trackColor="@color/logo_wheat" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Traditional Header Decoration -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/divider_dashed" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_add_product"
+                    app:tint="@color/logo_orange" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/divider_dashed" />
+
+            </LinearLayout>
+
+            <!-- Product Images Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Product Images"
+                android:textColor="@color/logo_dark_blue"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <!-- Main Image Upload -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardMainImage"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        app:strokeColor="@color/logo_gold"
+                        app:strokeWidth="1dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/ivMainImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/logo_wheat"
+                                android:padding="20dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_add_photo"
+                                app:tint="@color/logo_gold" />
+
+                            <TextView
+                                android:id="@+id/tvMainImageLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="4dp"
+                                android:background="@color/logo_orange"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="2dp"
+                                android:text="Main"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Additional Images -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardImage1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginEnd="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="gone"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="1dp"
+                        app:strokeColor="@color/logo_gold"
+                        app:strokeWidth="1dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/ivImage1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/logo_wheat"
+                                android:padding="15dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_add_photo"
+                                app:tint="@color/logo_gold" />
+
+                            <ImageView
+                                android:id="@+id/ivRemove1"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:background="@color/white"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_remove_circle"
+                                android:visibility="gone"
+                                app:tint="@color/logo_orange" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Add More Button -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardAddMore"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@color/logo_wheat"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="1dp"
+                        app:strokeColor="@color/logo_gold"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_add"
+                                app:tint="@color/logo_gold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add"
+                                android:textColor="@color/logo_gold"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <!-- Product Information Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/logo_gold"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:drawableStart="@drawable/ic_product"
+                        android:drawablePadding="8dp"
+                        android:text="Product Information"
+                        android:textColor="@color/logo_dark_blue"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Product Name (English) -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="@color/logo_gold"
+                        app:boxStrokeWidth="1dp"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:hintTextColor="@color/logo_blue"
+                        app:startIconDrawable="@drawable/ic_product_name"
+                        app:startIconTint="@color/logo_orange">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etProductNameEn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Product Name (English)"
+                            android:maxLines="2"
+                            android:textColor="@color/logo_dark_blue"
+                            android:textColorHint="@color/logo_blue"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Product Name (Hindi) -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="@color/logo_gold"
+                        app:boxStrokeWidth="1dp"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:hintTextColor="@color/logo_blue"
+                        app:startIconDrawable="@drawable/ic_product_name_hindi"
+                        app:startIconTint="@color/logo_green">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etProductNameHi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Product Name (हिंदी)"
+                            android:maxLines="2"
+                            android:textColor="@color/logo_dark_blue"
+                            android:textColorHint="@color/logo_blue"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Category Spinner -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="@color/logo_gold"
+                        app:boxStrokeWidth="1dp"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:endIconMode="dropdown_menu"
+                        app:hintTextColor="@color/logo_blue"
+                        app:startIconDrawable="@drawable/ic_category"
+                        app:startIconTint="@color/logo_brown">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/actCategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Select Category"
+                            android:inputType="none"
+                            android:textColor="@color/logo_dark_blue"
+                            android:textColorHint="@color/logo_blue"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Description -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="@color/logo_gold"
+                        app:boxStrokeWidth="1dp"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:hintTextColor="@color/logo_blue"
+                        app:startIconDrawable="@drawable/ic_description"
+                        app:startIconTint="@color/logo_blue">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Product Description"
+                            android:inputType="textMultiLine"
+                            android:maxLines="4"
+                            android:textColor="@color/logo_dark_blue"
+                            android:textColorHint="@color/logo_blue"
+                            android:textSize="14sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Pricing & Stock Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/logo_gold"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:drawableStart="@drawable/ic_price"
+                        android:drawablePadding="8dp"
+                        android:text="Pricing and Stock"
+                        android:textColor="@color/logo_dark_blue"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Price and MRP Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <!-- Selling Price -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            app:boxStrokeColor="@color/logo_gold"
+                            app:boxStrokeWidth="1dp"
+                            app:boxStrokeWidthFocused="2dp"
+                            app:hintTextColor="@color/logo_blue"
+                            app:startIconDrawable="@drawable/ic_rupee"
+                            app:startIconTint="@color/logo_orange">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etPrice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Selling Price"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/logo_dark_blue"
+                                android:textColorHint="@color/logo_blue"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- MRP -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:boxStrokeColor="@color/logo_gold"
+                            app:boxStrokeWidth="1dp"
+                            app:boxStrokeWidthFocused="2dp"
+                            app:hintTextColor="@color/logo_blue"
+                            app:startIconDrawable="@drawable/ic_rupee"
+                            app:startIconTint="@color/logo_green">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etMrp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="MRP"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/logo_dark_blue"
+                                android:textColorHint="@color/logo_blue"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <!-- Discount % -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="@color/logo_gold"
+                        app:boxStrokeWidth="1dp"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:endIconDrawable="@drawable/ic_percent"
+                        app:endIconMode="custom"
+                        app:endIconTint="@color/logo_blue"
+                        app:hintTextColor="@color/logo_blue"
+                        app:startIconDrawable="@drawable/ic_discount"
+                        app:startIconTint="@color/logo_gold">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDiscount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Discount % (Optional)"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:textColor="@color/logo_dark_blue"
+                            android:textColorHint="@color/logo_blue"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Stock Quantity -->
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Product Variants Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/logo_gold"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:drawableStart="@drawable/ic_variant"
+                        android:drawablePadding="8dp"
+                        android:text="Product Variants"
+                        android:textColor="@color/logo_dark_blue"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Weight/Unit -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            app:boxStrokeColor="@color/logo_gold"
+                            app:boxStrokeWidth="1dp"
+                            app:hintTextColor="@color/logo_blue"
+                            app:startIconDrawable="@drawable/ic_weight"
+                            app:startIconTint="@color/logo_blue">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etWeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Weight/Quantity"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/logo_dark_blue"
+                                android:textColorHint="@color/logo_blue"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Unit Spinner -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:boxStrokeColor="@color/logo_gold"
+                            app:boxStrokeWidth="1dp"
+                            app:endIconMode="dropdown_menu"
+                            app:hintTextColor="@color/logo_blue"
+                            app:startIconDrawable="@drawable/ic_unit"
+                            app:startIconTint="@color/logo_green">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/actUnit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="Unit"
+                                android:inputType="none"
+                                android:text="kg"
+                                android:textColor="@color/logo_dark_blue"
+                                android:textColorHint="@color/logo_blue"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Additional Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/logo_gold"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:drawableStart="@drawable/ic_additional"
+                        android:drawablePadding="8dp"
+                        android:text="Additional Details"
+                        android:textColor="@color/logo_dark_blue"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Brand -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="@color/logo_gold"
+                        app:boxStrokeWidth="1dp"
+                        app:hintTextColor="@color/logo_blue"
+                        app:startIconDrawable="@drawable/ic_brand"
+                        app:startIconTint="@color/logo_brown">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etBrand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Brand (Optional)"
+                            android:textColor="@color/logo_dark_blue"
+                            android:textColorHint="@color/logo_blue"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Shelf Life -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        app:boxStrokeColor="@color/logo_gold"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconMode="dropdown_menu"
+                        app:hintTextColor="@color/logo_blue"
+                        app:startIconDrawable="@drawable/ic_shelf_life"
+                        app:startIconTint="@color/logo_orange">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/actShelfLife"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Shelf Life"
+                            android:inputType="none"
+                            android:text="12 Months"
+                            android:textColor="@color/logo_dark_blue"
+                            android:textColorHint="@color/logo_blue"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Offer Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/logo_gold"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:drawableStart="@drawable/ic_offer"
+                        android:drawablePadding="8dp"
+                        android:text="Offer Details"
+                        android:textColor="@color/logo_dark_blue"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Checkbox for Offer -->
+                    <CheckBox
+                        android:id="@+id/cbOffer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:buttonTint="@color/logo_orange"
+                        android:text="This product has a special offer"
+                        android:textColor="@color/logo_dark_blue"
+                        android:textSize="14sp" />
+
+                    <!-- Offer Fields (Initially Hidden) -->
+                    <LinearLayout
+                        android:id="@+id/layoutOfferFields"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <!-- Offer Type Spinner -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            app:boxStrokeColor="@color/logo_gold"
+                            app:boxStrokeWidth="1dp"
+                            app:endIconMode="dropdown_menu"
+                            app:hintTextColor="@color/logo_blue"
+                            app:startIconDrawable="@drawable/ic_offer_type"
+                            app:startIconTint="@color/logo_green">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/actOfferType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Offer Type"
+                                android:inputType="none"
+                                android:textColor="@color/logo_dark_blue"
+                                android:textColorHint="@color/logo_blue"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Upload Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUploadProduct"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="16dp"
+                android:text="Upload Product"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/logo_orange"
+                app:cornerRadius="28dp"
+                app:elevation="4dp"
+                app:icon="@drawable/ic_upload"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp" />
+
+            <!-- Preview Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPreview"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"
+                android:text="Preview Product"
+                android:textColor="@color/logo_dark_blue"
+                android:textSize="16sp"
+                app:backgroundTint="@color/white"
+                app:cornerRadius="24dp"
+                app:icon="@drawable/ic_preview"
+                app:iconGravity="textStart"
+                app:iconTint="@color/logo_dark_blue"
+                app:strokeColor="@color/logo_gold"
+                app:strokeWidth="1dp" />
+
+            <!-- Traditional Footer -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/divider_dashed" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fill all required fields"
+                    android:textColor="@color/logo_gold"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/divider_dashed" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

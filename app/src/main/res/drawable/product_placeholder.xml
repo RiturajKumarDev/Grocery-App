@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Background -->
+    <path
+        android:fillColor="@color/logo_wheat"
+        android:pathData="M0,0 L200,0 L200,200 L0,200 Z" />
+
+    <!-- Traditional Border Pattern -->
+    <path
+        android:strokeColor="@color/logo_gold"
+        android:strokeWidth="2"
+        android:pathData="M10,10 L190,10 L190,190 L10,190 L10,10Z" />
+
+    <!-- Decorative Corner - Top Left -->
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M20,20 L35,20 L20,35 Z" />
+
+    <!-- Decorative Corner - Top Right -->
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M180,20 L165,20 L180,35 Z" />
+
+    <!-- Decorative Corner - Bottom Left -->
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M20,180 L35,180 L20,165 Z" />
+
+    <!-- Decorative Corner - Bottom Right -->
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M180,180 L165,180 L180,165 Z" />
+
+    <!-- Shopping Bag/Grocery Icon -->
+    <!-- Bag Body -->
+    <path
+        android:fillColor="@color/logo_blue"
+        android:pathData="M80,70 L120,70 L130,130 L70,130 L80,70Z" />
+
+    <!-- Bag Handle -->
+    <path
+        android:strokeColor="@color/logo_dark_blue"
+        android:strokeWidth="4"
+        android:pathData="M95,70 Q100,50 105,70" />
+
+    <!-- Product Details (Lines representing items) -->
+    <path
+        android:strokeColor="@color/logo_brown"
+        android:strokeWidth="3"
+        android:pathData="M85,90 L115,90" />
+    <path
+        android:strokeColor="@color/logo_brown"
+        android:strokeWidth="3"
+        android:pathData="M85,100 L115,100" />
+    <path
+        android:strokeColor="@color/logo_brown"
+        android:strokeWidth="3"
+        android:pathData="M85,110 L115,110" />
+
+    <!-- Rice/Wheat Grain Elements -->
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M50,140 L60,130 L70,140 L60,150 Z" />
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M130,140 L140,130 L150,140 L140,150 Z" />
+
+    <!-- Freshness Leaf -->
+    <path
+        android:fillColor="@color/logo_green"
+        android:pathData="M160,50 Q170,40 170,50 Q180,60 170,65 Q160,70 165,55 Q160,50 160,50Z" />
+
+</vector>

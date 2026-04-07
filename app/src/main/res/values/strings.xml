@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Shivam Kirana Store</string>
+    <string name="default_web_client_id">297809522285-0kgid62ej7q60tf7keso3jj8khukcqnr.apps.googleusercontent.com</string>
+    <string name="home">Home</string>
+    <string name="carts">Carts</string>
+    <string name="profile">Profile</string>
+    <string name="favorites">Favorites</string>
+    <string name="_00">00</string>
+    <string name="search_for_products">Search for products</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="sort_options">
+        <item>Recent First</item>
+        <item>Oldest First</item>
+        <item>Highest Amount</item>
+        <item>Lowest Amount</item>
+    </string-array>
+</resources>

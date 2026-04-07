@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardPreventCornerOverlap="true"
+    app:strokeColor="@color/logo_gold"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Product Image Section -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <!-- Product Image -->
+            <ImageView
+                android:id="@+id/productSmallImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/logo_wheat"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                android:src="@drawable/product_placeholder" />
+
+            <!-- Small Offer Badge -->
+            <TextView
+                android:id="@+id/offerSmallBadge"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="4dp"
+                android:background="@drawable/offer_badge_small"
+                android:gravity="center"
+                android:text="20%"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                tools:text="20%" />
+
+            <!-- Category Indicator (optional) -->
+            <TextView
+                android:id="@+id/categorySmallIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="4dp"
+                android:alpha="0.8"
+                android:background="@color/logo_dark_blue"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="2dp"
+                android:text="Masala"
+                android:textColor="@color/white"
+                android:textSize="8sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <!-- Product Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!-- Product Name -->
+            <TextView
+                android:id="@+id/productSmallName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="MDH Garam Masala"
+                android:textColor="@color/logo_dark_blue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="MDH Garam Masala" />
+
+            <!-- Hindi Name (optional) -->
+            <TextView
+                android:id="@+id/productSmallHindiName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="गरम मसाला"
+                android:textColor="@color/logo_brown"
+                android:textSize="10sp" />
+
+            <!-- Weight/Quantity -->
+            <TextView
+                android:id="@+id/productSmallWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_weight_small"
+                android:drawablePadding="2dp"
+                android:drawableTint="@color/logo_blue"
+                android:text="200g"
+                android:textColor="@color/logo_blue"
+                android:textSize="12sp" />
+
+            <!-- Rating Row -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <LinearLayout
+                    android:id="@+id/ratingSmallLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/ratingSmallValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.5"
+                        android:textColor="@color/logo_gold"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="2dp"
+                        android:src="@drawable/ic_star_small"
+                        app:tint="@color/logo_gold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/reviewCountSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@id/ratingSmallLayout"
+                    android:text="(234)"
+                    android:textColor="@color/logo_blue"
+                    android:textSize="9sp" />
+
+            </RelativeLayout>
+
+            <!-- Price Section -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal">
+
+                    <!-- Current Price -->
+                    <TextView
+                        android:id="@+id/priceSmallCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹180"
+                        android:textColor="@color/logo_dark_blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- Original Price (if offer exists) -->
+                    <TextView
+                        android:id="@+id/priceSmallOriginal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:alpha="0.7"
+                        android:text="₹240"
+                        android:textColor="@color/logo_gold"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <!-- Add to Cart Button (Small) -->
+                <ImageButton
+                    android:id="@+id/addToCartSmall"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/cart_button_small"
+                    android:padding="6dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_cart_small"
+                    app:tint="@color/white" />
+
+            </RelativeLayout>
+
+            <!-- Quick Buy Button (for horizontal scrolling cards) -->
+            <Button
+                android:id="@+id/quickBuySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/logo_green"
+                android:text="Quick Buy"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:cornerRadius="14dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

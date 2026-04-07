@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Weighing Scale Base -->
+    <path
+        android:fillColor="#1F5A73"
+        android:pathData="M4,19 L20,19 L20,21 L4,21 L4,19Z" />
+
+    <!-- Scale Platform -->
+    <path
+        android:fillColor="#0F3A4A"
+        android:pathData="M6,15 L18,15 L18,19 L6,19 L6,15Z" />
+
+    <!-- Scale Pillar/Stand -->
+    <path
+        android:fillColor="#8A4B2A"
+        android:pathData="M11,7 L13,7 L13,15 L11,15 L11,7Z" />
+
+    <!-- Scale Beam -->
+    <path
+        android:fillColor="#D4A24C"
+        android:pathData="M5,7 L19,7 L19,9 L5,9 L5,7Z" />
+
+    <!-- Left Hanging Hook -->
+    <path
+        android:fillColor="#D4A24C"
+        android:pathData="M8,9 L8,12 L10,12" />
+
+    <!-- Right Hanging Hook -->
+    <path
+        android:fillColor="#D4A24C"
+        android:pathData="M16,9 L16,12 L14,12" />
+
+    <!-- Weight Plates (Left) - Using path for circles -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M8,14 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M8,14 m-1,0 a1,1 0 1,0 2,0 a1,1 0 1,0 -2,0" />
+
+    <!-- Weight Plates (Right) -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M16,14 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M16,14 m-1,0 a1,1 0 1,0 2,0 a1,1 0 1,0 -2,0" />
+
+</vector>

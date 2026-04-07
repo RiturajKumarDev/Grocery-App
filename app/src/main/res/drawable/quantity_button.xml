@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer Border (Gold) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/logo_gold" />
+            <size
+                android:width="38dp"
+                android:height="38dp" />
+        </shape>
+    </item>
+
+    <!-- Inner Background -->
+    <item
+        android:left="2dp"
+        android:top="2dp"
+        android:right="2dp"
+        android:bottom="2dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/logo_wheat" />
+        </shape>
+    </item>
+
+    <!-- Decorative Dot (Center) -->
+    <item android:gravity="center">
+        <shape android:shape="oval">
+            <size
+                android:width="4dp"
+                android:height="4dp" />
+            <solid android:color="@color/logo_gold" />
+        </shape>
+    </item>
+
+</layer-list>

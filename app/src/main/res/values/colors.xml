@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="text_gold">#FFD700</color>
+    <!-- Main Background Blue -->
+    <color name="logo_dark_blue">#0F3A4A</color>
+    <color name="logo_blue">#1F5A73</color>
+
+    <!-- Gold Border / Decoration -->
+    <color name="logo_gold">#D4A24C</color>
+    <color name="logo_light_gold">#F2C879</color>
+
+    <!-- Orange Text (शिवम) -->
+    <color name="logo_orange">#F28C28</color>
+    <color name="red">#F44336</color>
+
+    <!-- White Text -->
+    <color name="logo_white">#FFFFFF</color>
+
+    <!-- Ribbon Brown -->
+    <color name="logo_brown">#8A4B2A</color>
+
+    <!-- Leaf Green -->
+    <color name="logo_green">#4CAF50</color>
+    <color name="logo_dark_green">#2E7D32</color>
+
+    <!-- Wheat Color -->
+    <color name="logo_wheat">#E6C27A</color>
+</resources>

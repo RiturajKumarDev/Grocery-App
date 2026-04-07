@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Gradient Background -->
+    <gradient
+        android:angle="135"
+        android:endColor="@color/logo_white"
+        android:startColor="@color/logo_orange"
+        android:type="linear" />
+
+    <!-- Rounded Rectangle Shape -->
+    <corners android:radius="20dp" />
+
+    <!-- Gold Border -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/logo_gold"
+        android:dashWidth="6dp"
+        android:dashGap="3dp" />
+
+    <!-- Padding -->
+    <padding
+        android:bottom="8dp"
+        android:left="12dp"
+        android:right="12dp"
+        android:top="8dp" />
+</shape>

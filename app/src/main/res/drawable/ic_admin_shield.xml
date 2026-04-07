@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Traditional Shield Shape -->
+    <path
+        android:fillColor="@color/logo_dark_blue"
+        android:pathData="M12,2L4,6v6c0,5.2 3.6,10 8,11 4.4-1 8-5.8 8-11V6l-8-4z" />
+
+    <!-- Gold Border (without dash pattern - use solid line) -->
+    <path
+        android:strokeColor="@color/logo_gold"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M12,2L4,6v6c0,5.2 3.6,10 8,11 4.4-1 8-5.8 8-11V6l-8-4z" />
+
+    <!-- Traditional Om Symbol or Design -->
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M12,8 L14,11 L17,11 L15,14 L16,18 L12,15 L8,18 L9,14 L7,11 L10,11 L12,8Z" />
+
+    <!-- Decorative Dots - Using path for circles -->
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M9,9 m-1,0 a1,1 0 1,0 2,0 a1,1 0 1,0 -2,0" />
+
+    <path
+        android:fillColor="@color/logo_gold"
+        android:pathData="M15,9 m-1,0 a1,1 0 1,0 2,0 a1,1 0 1,0 -2,0" />
+
+</vector>

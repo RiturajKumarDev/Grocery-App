@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/logo_white"
+    tools:context=".SplashScreen">
+
+    <!-- Gradient Background with Traditional Colors -->
+    <View
+        android:id="@+id/gradientBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_gradient_background" />
+
+    <!-- Decorative Top Pattern (Traditional Motif) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:alpha="0.1"
+        android:background="@drawable/top_pattern"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Decorative Bottom Pattern -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:alpha="0.1"
+        android:background="@drawable/bottom_pattern"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Wheat Decoration - Top -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:alpha="0.8"
+            android:src="@drawable/wheat_decoration"
+            app:tint="@color/logo_gold" />
+
+        <!-- App Logo with traditional border -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:translationZ="8dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="20dp"
+            app:cardMaxElevation="24dp"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- Gold Border Accent -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@color/logo_gold" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:importantForAccessibility="no"
+                    android:padding="20dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/shivam_kirana_store" />
+
+                <!-- Traditional Strip -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="@drawable/traditional_strip" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Wheat Decoration - Bottom -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:alpha="0.8"
+            android:rotation="180"
+            android:src="@drawable/wheat_decoration"
+            app:tint="@color/logo_gold" />
+
+        <!-- App Name with traditional styling -->
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:letterSpacing="0.05"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:text="@string/app_name"
+            android:textColor="@color/logo_dark_blue"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <!-- Hindi Subtitle (Traditional) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif"
+            android:text="शिवम किराना स्टोर"
+            android:textColor="@color/logo_orange"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Tagline with wheat color -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:letterSpacing="0.03"
+            android:text="आपका भरोसेमंद किराना स्टोर"
+            android:textColor="@color/logo_brown"
+            android:textSize="14sp" />
+
+        <!-- English Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:letterSpacing="0.03"
+            android:text="Your Trusted Grocery Store"
+            android:textColor="@color/logo_blue"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <!-- Spacer -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <!-- Progress indicator with traditional colors -->
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/progress_background"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Loading text with animation -->
+            <TextView
+                android:id="@+id/loadingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="sans-serif"
+                android:text="लोड हो रहा है..."
+                android:textColor="@color/logo_dark_blue"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- Custom progress bar with traditional colors -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:indeterminate="true"
+                android:progressBackgroundTint="@color/logo_wheat"
+                android:progressTint="@color/logo_green" />
+
+            <!-- Loading message -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif"
+                android:text="Fresh groceries loading..."
+                android:textColor="@color/logo_brown"
+                android:textSize="12sp" />
+
+            <!-- Version info with gold color -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0.02"
+                android:text="Version 1.0.0 | शुभ मुहूर्त"
+                android:textColor="@color/logo_gold"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <!-- Traditional Footer Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:alpha="0.7"
+            android:text="ग्राहक सेवा में सदैव तत्पर"
+            android:textColor="@color/logo_dark_green"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

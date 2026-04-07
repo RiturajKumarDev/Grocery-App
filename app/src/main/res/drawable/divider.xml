@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Gradient from transparent to gold to transparent -->
+    <gradient
+        android:startColor="#00D4A24C"
+        android:centerColor="@color/logo_gold"
+        android:endColor="#00D4A24C"
+        android:angle="0" />
+
+    <!-- Height -->
+    <size android:height="2dp" />
+</shape>

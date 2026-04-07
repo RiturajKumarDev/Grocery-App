@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/logo_orange"/>
+    <corners
+        android:topLeftRadius="0dp"
+        android:topRightRadius="32dp"
+        android:bottomRightRadius="0dp"
+        android:bottomLeftRadius="32dp" />
+    <stroke
+        android:width="3dp"
+        android:color="@color/logo_gold"
+        android:dashWidth="6dp"
+        android:dashGap="3dp"/>
+</shape>
