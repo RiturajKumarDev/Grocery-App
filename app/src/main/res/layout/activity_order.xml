@@ -176,7 +176,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="QR Code"
-                            android:textColor="@android:color/black" />
+                            android:textColor="@android:color/black"
+                            android:visibility="gone" />
 
                         <RadioButton
                             android:id="@+id/rbCard"
@@ -184,7 +185,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Credit/Debit Card"
-                            android:textColor="@android:color/black" />
+                            android:textColor="@android:color/black"
+                            android:visibility="gone" />
 
                         <RadioButton
                             android:id="@+id/rbUpi"
@@ -192,7 +194,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="UPI"
-                            android:textColor="@android:color/black" />
+                            android:textColor="@android:color/black"
+                            android:visibility="gone" />
 
                         <RadioButton
                             android:id="@+id/rbNetbanking"
@@ -200,7 +203,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Net Banking"
-                            android:textColor="@android:color/black" />
+                            android:textColor="@android:color/black"
+                            android:visibility="gone" />
                     </RadioGroup>
 
                     <!-- Card Details (Hidden by default) -->

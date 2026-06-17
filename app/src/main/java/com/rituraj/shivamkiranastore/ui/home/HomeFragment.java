@@ -1,8 +1,10 @@
 package com.rituraj.shivamkiranastore.ui.home;
 
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -28,6 +30,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.rituraj.shivamkiranastore.Models.HeroImage;
 import com.rituraj.shivamkiranastore.Models.LanguageModel;
 import com.rituraj.shivamkiranastore.Models.Product;
 import com.rituraj.shivamkiranastore.R;
@@ -35,6 +39,8 @@ import com.rituraj.shivamkiranastore.adapter.ImageSliderRecycler;
 import com.rituraj.shivamkiranastore.adapter.ShowProductList;
 import com.rituraj.shivamkiranastore.databinding.FragmentHomeBinding;
 import com.rituraj.shivamkiranastore.translationLanguage.LanguageManager;
+import com.rituraj.shivamkiranastore.ui.admin.AdminDashboardActivity;
+import com.rituraj.shivamkiranastore.ui.search.SearchProductActivity;
 
 import java.util.ArrayList;
 
@@ -44,7 +50,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private ViewPager2 viewPager;
     private ImageSliderRecycler adapter;
-    private ArrayList<Integer> images = new ArrayList<>();
+    private ArrayList<HeroImage> heroImages = new ArrayList<>();
     private Handler sliderHandler = new Handler();
     private FirebaseDatabase database;
     private DatabaseReference myReference;
@@ -53,14 +59,11 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerViewSpecialProduct, recyclerViewTopProduct, recyclerViewAllProduct;
     private String userId;
 
-    private Runnable sliderRunnable = new Runnable() {
+    private final Runnable sliderRunnable = new Runnable() {
         @Override
         public void run() {
-            if (viewPager != null && adapter != null) {
-                int nextPos = viewPager.getCurrentItem() + 1;
-                if (nextPos >= images.size()) {
-                    nextPos = 0;
-                }
+            if (viewPager != null && adapter != null && heroImages.size() > 1) {
+                int nextPos = (viewPager.getCurrentItem() + 1) % heroImages.size();
                 viewPager.setCurrentItem(nextPos, true);
                 sliderHandler.postDelayed(this, 3000);
             }
@@ -106,7 +109,7 @@ public class HomeFragment extends Fragment {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         userId = auth.getCurrentUser().getUid();
         binding.searchBoxAsBtn.setOnClickListener((v) -> {
-            Toast.makeText(requireContext(), "Search", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(requireContext(), SearchProductActivity.class));
         });
         setImageSlider();
         getSpecialOfferProducts();
@@ -117,30 +120,56 @@ public class HomeFragment extends Fragment {
     private void setImageSlider() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String email = auth.getCurrentUser().getEmail();
-        images.add(R.drawable.shivam_kirana_store_bg);
-        images.add(R.drawable.shivam_kirana_store_bg);
-        images.add(R.drawable.shivam_kirana_store_bg);
+        heroImages.add(new HeroImage(R.drawable.shivam_kirana_store_bg));
+        heroImages.add(new HeroImage(R.drawable.shivam_kirana_store_bg));
+        heroImages.add(new HeroImage(R.drawable.shivam_kirana_store_bg));
         imageAdepterSetting(email);
+        myReference = database.getReference().child("HeroImages");
+        myReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    heroImages.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        HeroImage heroImage = dataSnapshot.getValue(HeroImage.class);
+                        if (heroImage != null) {
+                            heroImage.setImageId(dataSnapshot.getKey());
+                            heroImages.add(heroImage);
+                        }
+                    }
+                    imageAdepterSetting(email);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
     public void imageAdepterSetting(String email) {
         viewPager = view.findViewById(R.id.homeShaliderViewPager);
-        adapter = new ImageSliderRecycler(requireContext(), images, email);
+        adapter = new ImageSliderRecycler(requireContext(), heroImages, email);
         viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(3);
         viewPager.setClipToPadding(false);
         viewPager.setClipChildren(false);
-        viewPager.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
+        if (viewPager.getChildAt(0) != null) {
+            viewPager.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
+        }
+        viewPager.setOffscreenPageLimit(1);
 
         CompositePageTransformer transformer = new CompositePageTransformer();
         transformer.addTransformer(new MarginPageTransformer(40));
         transformer.addTransformer((page, position) -> {
             float r = 1 - Math.abs(position);
-            page.setScaleY(0.85f + r * 0.15f);
-            page.setAlpha(0.7f + r * 0.3f);
+            page.setScaleY(0.90f + r * 0.10f);
+            page.setAlpha(0.8f + r * 0.2f);
         });
         viewPager.setPageTransformer(transformer);
-        sliderHandler.postDelayed(sliderRunnable, 3000);
+        sliderHandler.removeCallbacks(sliderRunnable);
+        if (heroImages.size() > 1) {
+            sliderHandler.postDelayed(sliderRunnable, 3000);
+        }
     }
 
     private void getSpecialOfferProducts() {
@@ -294,7 +323,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        sliderHandler.postDelayed(sliderRunnable, 3000);
+        if (heroImages.size() > 1) {
+            sliderHandler.postDelayed(sliderRunnable, 3000);
+        }
     }
 
     @Override

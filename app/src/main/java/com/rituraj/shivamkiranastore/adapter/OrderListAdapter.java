@@ -138,7 +138,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
             holder.btnDelivered.setVisibility(View.GONE);
 
         if (!order.getOrderStatus().equals("Delivered")) {
-            holder.btnDelivered.setVisibility(View.VISIBLE);
             holder.btnDelivered.setOnClickListener(v -> {
                 if (listener != null) {
                     listener.onDeliveredOrder(order, position);

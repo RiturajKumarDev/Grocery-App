@@ -143,11 +143,11 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
     private void setupClickListeners() {
         ivNotifications.setOnClickListener(v -> {
-            Toast.makeText(this, "Notifications", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminDashboardActivity.this, "Notifications", Toast.LENGTH_SHORT).show();
         });
 
         ivProfile.setOnClickListener(v -> {
-            Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminDashboardActivity.this, "Profile", Toast.LENGTH_SHORT).show();
         });
     }
 

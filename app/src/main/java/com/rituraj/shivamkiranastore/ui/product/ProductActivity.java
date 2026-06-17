@@ -50,7 +50,7 @@ import java.util.Collections;
 
 public class ProductActivity extends AppCompatActivity {
     private FirebaseDatabase database;
-    private String productId, email, userId;
+    private String productId, offer, email, userId;
     private ImageView productImage;
     private TextView productName, productHindiName;
     private TextView productSellingPrice, productSellingPrice2, productOriginalPrice, productSaveMoney, productOfferTextLarge;
@@ -74,11 +74,12 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void init() {
+        productId = getIntent().getStringExtra("productId");
+        offer = getIntent().getStringExtra("OFFER");
         database = FirebaseDatabase.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         email = auth.getCurrentUser().getEmail();
         userId = auth.getCurrentUser().getUid();
-        productId = getIntent().getStringExtra("productId");
 
         progressDialog = new ProgressDialog(ProductActivity.this);
         progressDialog.setMessage("Loading...");
@@ -114,7 +115,10 @@ public class ProductActivity extends AppCompatActivity {
 
     private void fun() {
         initViews();
-        getProductDetails();
+        if (offer == null)
+            getProductDetails();
+        else
+            getOfferProductDetails();
         getSimilarProducts();
 
         MaterialCardView productAdminDeleteBtn = findViewById(R.id.productAdminDeleteBtn);
@@ -167,11 +171,13 @@ public class ProductActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (progressDialog.isShowing()) progressDialog.dismiss();
                 if (!snapshot.exists()) {
+                    Toast.makeText(ProductActivity.this, "Offer ended!!!", Toast.LENGTH_SHORT).show();
                     finish();
                     return;
                 }
                 Product product = snapshot.getValue(Product.class);
                 if (product == null) {
+                    Toast.makeText(ProductActivity.this, "Offer ended!!!", Toast.LENGTH_SHORT).show();
                     finish();
                     return;
                 }
@@ -194,11 +200,13 @@ public class ProductActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (progressDialog.isShowing()) progressDialog.dismiss();
                 if (!snapshot.exists()) {
-                    getOfferProductDetails();
+                    Toast.makeText(ProductActivity.this, "Offer ended!!!", Toast.LENGTH_SHORT).show();
+                    finish();
                     return;
                 }
                 Product product = snapshot.getValue(Product.class);
                 if (product == null) {
+                    Toast.makeText(ProductActivity.this, "Offer ended!!!", Toast.LENGTH_SHORT).show();
                     finish();
                     return;
                 }

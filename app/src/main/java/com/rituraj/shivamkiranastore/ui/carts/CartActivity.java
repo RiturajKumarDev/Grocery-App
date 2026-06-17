@@ -24,6 +24,8 @@ import com.rituraj.shivamkiranastore.ui.product.ProductActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,6 +34,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,6 +69,12 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.OnCar
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        setupStatusBar();
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         init();
         initViews();
@@ -71,6 +84,54 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.OnCar
         setupClickListeners();
         updateCartVisibility();
         calculateTotals();
+    }
+
+    private void setupStatusBar() {
+        Window window = getWindow();
+
+        // Make status bar transparent (required for Android 15+)
+        window.setStatusBarColor(android.graphics.Color.TRANSPARENT);
+
+        // Create a view to act as the colored status bar background
+        View statusBarBackground = new View(this);
+        statusBarBackground.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                getStatusBarHeight()
+        ));
+        statusBarBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.logo_blue));
+
+        // Add the view to your root layout
+        ViewGroup decorView = (ViewGroup) window.getDecorView();
+        decorView.addView(statusBarBackground);
+
+        // Set status bar icons color (light or dark based on your blue)
+        setStatusBarIconColor(isColorDark(ContextCompat.getColor(this, R.color.logo_blue)));
+    }
+
+    private int getStatusBarHeight() {
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return getResources().getDimensionPixelSize(resourceId);
+        }
+        return (int) Math.ceil(24 * getResources().getDisplayMetrics().density);
+    }
+
+    private void setStatusBarIconColor(boolean isDarkBackground) {
+        WindowInsetsControllerCompat controller = new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
+        if (isDarkBackground) {
+            // Dark background - use light icons
+            controller.setAppearanceLightStatusBars(false);
+        } else {
+            // Light background - use dark icons
+            controller.setAppearanceLightStatusBars(true);
+        }
+    }
+
+    private boolean isColorDark(int color) {
+        double darkness = 1 - (0.299 * android.graphics.Color.red(color) +
+                0.587 * android.graphics.Color.green(color) +
+                0.114 * android.graphics.Color.blue(color)) / 255;
+        return darkness >= 0.5;
     }
 
     private void init() {
@@ -115,7 +176,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.OnCar
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists() && getContext() != null) {
                     cartId = snapshot.getKey();
-                }else
+                } else
                     cartId = null;
             }
 

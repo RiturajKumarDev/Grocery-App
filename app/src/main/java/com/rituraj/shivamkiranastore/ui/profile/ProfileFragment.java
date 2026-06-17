@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,7 +96,8 @@ public class ProfileFragment extends Fragment {
         });
 
         profileSettingBtn.setOnClickListener((v) -> {
-            requireContext().startActivity(new Intent(requireContext(), OrderListActivity.class));
+//            requireContext().startActivity(new Intent(requireContext(), ));
+            Toast.makeText(requireContext(), "Opening Setting....", Toast.LENGTH_SHORT).show();
         });
 
         profileManageAddress.setOnClickListener((v) -> {

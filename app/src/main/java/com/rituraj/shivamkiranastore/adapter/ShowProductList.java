@@ -23,6 +23,7 @@ import com.rituraj.shivamkiranastore.MainActivity;
 import com.rituraj.shivamkiranastore.Models.CartItem;
 import com.rituraj.shivamkiranastore.Models.Product;
 import com.rituraj.shivamkiranastore.R;
+import com.rituraj.shivamkiranastore.ui.address.ManageAddressActivity;
 import com.rituraj.shivamkiranastore.ui.product.ProductActivity;
 
 import java.util.ArrayList;
@@ -72,6 +73,9 @@ public class ShowProductList extends RecyclerView.Adapter<RecyclerView.ViewHolde
         });
         vh.cardBuyNowBtn.setOnClickListener((v) -> {
             Toast.makeText(context, "Buy Now", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, ManageAddressActivity.class);
+            intent.putExtra("productId", product.getProductId());
+            context.startActivity(intent);
         });
     }
 
@@ -112,6 +116,8 @@ public class ShowProductList extends RecyclerView.Adapter<RecyclerView.ViewHolde
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, ProductActivity.class);
+            if (productOfferType != null)
+                intent.putExtra("OFFER", "OFFER");
             intent.putExtra("productId", productId);
             context.startActivity(intent);
         }

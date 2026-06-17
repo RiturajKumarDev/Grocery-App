@@ -2,6 +2,7 @@ package com.rituraj.shivamkiranastore.Models;
 
 public class User {
     private String userId, userName, email, profileUrl, notificationToken;
+    private boolean isOnline;
 
     public User() {
     }
@@ -10,6 +11,14 @@ public class User {
         this.userName = userName;
         this.email = email;
         this.profileUrl = profileUrl;
+    }
+
+    public boolean isOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
     }
 
     public User(String userId, String userName, String email, String profileUrl) {
