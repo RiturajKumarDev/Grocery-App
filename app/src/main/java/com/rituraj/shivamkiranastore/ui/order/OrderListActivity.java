@@ -114,8 +114,7 @@ public class OrderListActivity extends AppCompatActivity {
         View statusBarBackground = new View(this);
         statusBarBackground.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                getStatusBarHeight()
-        ));
+                getStatusBarHeight()));
         statusBarBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.logo_blue));
 
         // Add the view to your root layout
@@ -135,7 +134,8 @@ public class OrderListActivity extends AppCompatActivity {
     }
 
     private void setStatusBarIconColor(boolean isDarkBackground) {
-        WindowInsetsControllerCompat controller = new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
+        WindowInsetsControllerCompat controller = new WindowInsetsControllerCompat(getWindow(),
+                getWindow().getDecorView());
         if (isDarkBackground) {
             // Dark background - use light icons
             controller.setAppearanceLightStatusBars(false);
@@ -189,37 +189,38 @@ public class OrderListActivity extends AppCompatActivity {
 
     private void setupRecyclerView() {
         orderList = new ArrayList<>();
-        adapter = new OrderListAdapter(OrderListActivity.this, filteredOrderList, new OrderListAdapter.OnOrderActionListener() {
-            @Override
-            public void onOrderClick(OrderModel order, int position) {
-                showOrderDetails(order);
-            }
+        adapter = new OrderListAdapter(OrderListActivity.this, filteredOrderList,
+                new OrderListAdapter.OnOrderActionListener() {
+                    @Override
+                    public void onOrderClick(OrderModel order, int position) {
+                        showOrderDetails(order);
+                    }
 
-            @Override
-            public void onTrackOrder(OrderModel order, int position) {
-                trackOrder(order);
-            }
+                    @Override
+                    public void onTrackOrder(OrderModel order, int position) {
+                        trackOrder(order);
+                    }
 
-            @Override
-            public void onReturnOrder(OrderModel order, int position) {
-                showReturnDialog(order);
-            }
+                    @Override
+                    public void onReturnOrder(OrderModel order, int position) {
+                        showReturnDialog(order);
+                    }
 
-            @Override
-            public void onReorder(OrderModel order, int position) {
-                reorderItems(order);
-            }
+                    @Override
+                    public void onReorder(OrderModel order, int position) {
+                        reorderItems(order);
+                    }
 
-            @Override
-            public void onCancelOrder(OrderModel order, int position) {
-                showCancelDialog(order, position);
-            }
+                    @Override
+                    public void onCancelOrder(OrderModel order, int position) {
+                        showCancelDialog(order, position);
+                    }
 
-            @Override
-            public void onDeliveredOrder(OrderModel order, int position) {
-                showDeliveredDialog(order, position);
-            }
-        }, email);
+                    @Override
+                    public void onDeliveredOrder(OrderModel order, int position) {
+                        showDeliveredDialog(order, position);
+                    }
+                }, email);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -228,7 +229,8 @@ public class OrderListActivity extends AppCompatActivity {
 
     private void setupFilters() {
         // Setup sort spinner
-        ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this, R.array.sort_options, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> sortAdapter = ArrayAdapter.createFromResource(this, R.array.sort_options,
+                android.R.layout.simple_spinner_item);
         sortAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSort.setAdapter(sortAdapter);
 
@@ -331,7 +333,8 @@ public class OrderListActivity extends AppCompatActivity {
             if (!currentFilter.equals("ALL")) {
                 switch (currentFilter) {
                     case "ACTIVE":
-                        matchesFilter = !order.getOrderStatus().equals("Delivered") && !order.getOrderStatus().equals("Cancelled");
+                        matchesFilter = !order.getOrderStatus().equals("Delivered")
+                                && !order.getOrderStatus().equals("Cancelled");
                         break;
                     case "DELIVERED":
                         matchesFilter = order.getOrderStatus().equals("Delivered");
@@ -344,7 +347,8 @@ public class OrderListActivity extends AppCompatActivity {
 
             // Apply search filter
             if (matchesFilter && !searchQuery.isEmpty()) {
-                matchesFilter = order.getOrderId().toLowerCase().contains(searchQuery) || order.getItems().getName().toLowerCase().contains(searchQuery);
+                matchesFilter = order.getOrderId().toLowerCase().contains(searchQuery)
+                        || order.getItems().getName().toLowerCase().contains(searchQuery);
             }
 
             if (matchesFilter) {
@@ -415,31 +419,38 @@ public class OrderListActivity extends AppCompatActivity {
     }
 
     private void showReturnDialog(OrderModel order) {
-        new AlertDialog.Builder(this).setTitle("Return Order").setMessage("Are you sure you want to return this order?").setPositiveButton("Yes, Return", (dialog, which) -> {
-            Toast.makeText(this, "Return request submitted for " + order.getOrderId(), Toast.LENGTH_SHORT).show();
-        }).setNegativeButton("Cancel", null).show();
+        new AlertDialog.Builder(this).setTitle("Return Order").setMessage("Are you sure you want to return this order?")
+                .setPositiveButton("Yes, Return", (dialog, which) -> {
+                    Toast.makeText(this, "Return request submitted for " + order.getOrderId(), Toast.LENGTH_SHORT)
+                            .show();
+                }).setNegativeButton("Cancel", null).show();
     }
 
     private void showCancelDialog(OrderModel order, int position) {
-        new AlertDialog.Builder(this).setTitle("Cancel Order").setMessage("Are you sure you want to cancel this order?").setPositiveButton("Yes, Cancel", (dialog, which) -> {
-            order.setOrderStatus("Cancelled");
-            order.setOrderStatusColor("#F44336");
-            adapter.notifyItemChanged(position);
-            Toast.makeText(this, "Order cancelled", Toast.LENGTH_SHORT).show();
-            filterOrders();
-            database.getReference("Orders").child(userId).child(order.getOrderId()).child("orderStatus").setValue("Cancelled");
-        }).setNegativeButton("No", null).show();
+        new AlertDialog.Builder(this).setTitle("Cancel Order").setMessage("Are you sure you want to cancel this order?")
+                .setPositiveButton("Yes, Cancel", (dialog, which) -> {
+                    order.setOrderStatus("Cancelled");
+                    order.setOrderStatusColor("#F44336");
+                    adapter.notifyItemChanged(position);
+                    Toast.makeText(this, "Order cancelled", Toast.LENGTH_SHORT).show();
+                    filterOrders();
+                    database.getReference("Orders").child(userId).child(order.getOrderId()).child("orderStatus")
+                            .setValue("Cancelled");
+                }).setNegativeButton("No", null).show();
     }
 
     private void showDeliveredDialog(OrderModel order, int position) {
-        new AlertDialog.Builder(this).setTitle("Deliver Order").setMessage("Are you sure you want to deliver this order?").setPositiveButton("Yes", (dialog, which) -> {
-            order.setOrderStatus("Delivered");
-            order.setOrderStatusColor("#4CAF50");
-            adapter.notifyItemChanged(position);
-            Toast.makeText(this, "Delivered Order", Toast.LENGTH_SHORT).show();
-            filterOrders();
-            database.getReference("Orders").child(userId).child(order.getOrderId()).child("orderStatus").setValue("Delivered");
-        }).setNegativeButton("No", null).show();
+        new AlertDialog.Builder(this).setTitle("Deliver Order")
+                .setMessage("Are you sure you want to deliver this order?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    order.setOrderStatus("Delivered");
+                    order.setOrderStatusColor("#4CAF50");
+                    adapter.notifyItemChanged(position);
+                    Toast.makeText(this, "Delivered Order", Toast.LENGTH_SHORT).show();
+                    filterOrders();
+                    database.getReference("Orders").child(userId).child(order.getOrderId()).child("orderStatus")
+                            .setValue("Delivered");
+                }).setNegativeButton("No", null).show();
     }
 
     private void reorderItems(OrderModel order) {

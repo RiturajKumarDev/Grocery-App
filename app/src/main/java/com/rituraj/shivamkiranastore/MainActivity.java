@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setSubtitle("Express delivery in 30 mins");
         mainToolBar.setOnClickListener((v) -> {
             String email = user.getEmail();
-            if (email.equals("riturajkumar1105@gmail.com") || email.equals("shivamkumarjkt@gmail.com") || email.equals("shubham756291@gmail.com"))
+            if (email.equals("riturajkumar1105@gmail.com") || email.equals("shivamkumarjkt@gmail.com") || email.equals("shubham756291@gmail.com") || email.equals("asah92373@gmail.com"))
                 startActivity(new Intent(MainActivity.this, AdminDashboardActivity.class));
             else {
                 try {

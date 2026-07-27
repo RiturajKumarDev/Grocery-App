@@ -15,8 +15,8 @@ android {
         applicationId = "com.rituraj.shivamkiranastore"
         minSdk = 26
         targetSdk = 36
-        versionCode = 6
-        versionName = "2.0.2"
+        versionCode = 7
+        versionName = "2.0.3"
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
